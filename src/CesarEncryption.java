@@ -24,5 +24,4 @@ public class CesarEncryption {
         }
         return res.toString();
     }
-
 }
