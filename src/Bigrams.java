@@ -2,14 +2,14 @@ import java.util.Arrays;
 
 public class Bigrams {
 
-    private final char[][] rightBigram = {
+    private final char[][] leftBigram = {
             {'К', 'Ф', 'А', 'М', 'У', '+'},
             {'Б', 'Х', 'П', 'Р', 'О', 'Е'},
             {'Ї', 'В', 'Я', 'Є', ' ', 'Д'},
             {'.', 'Л', 'Й', 'Ю', 'Ц', 'Г'},
             {'1', 'Ж', 'И', 'С', 'Т', 'Ш',},
             {'З', 'Ч', 'І', 'Ь', 'Н', 'Щ'}};
-    private final char[][] leftBigram  = {
+    private final char[][] rightBigram  = {
             {'Щ', ' ', 'Р', 'К', 'А', 'С'},
             {'Д', 'Й', 'Ь', 'Г', 'В', 'Ж',},
             {'Х', 'М', 'Ф', 'Т', 'І', 'Ї'},

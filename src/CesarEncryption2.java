@@ -67,7 +67,6 @@ public class CesarEncryption2 {
                 if(i+1 == alphabet.length && flag2){
                     i = -1;
                     flag2 = false;
-                    System.out.println("HERE YOU ARE");
                 }
             }
             else {

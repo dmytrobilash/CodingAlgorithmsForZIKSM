@@ -1,2 +1,41 @@
 public class Vigenere {
+    private static final char [] array = {'А', 'Б', 'В', 'Г', 'Ґ', 'Д','Е',
+            'Є','Ж','З','И','І','Ї','Й','К','Л','М',
+            'Н','О','П','Р','С','Т','У','Ф','X','Ц','Ч','Ш','Щ','Ь','Ю','Я'};
+    private char [][] createTable(char [] array) {
+        char[][] table = new char[array.length][array.length];
+        int k = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if(i+j < array.length){
+                    k = j+i;
+                    table[i][j] = array[k];
+                    if(k == array.length-1)
+                    {
+                        k = 0;
+                    }
+                }
+                else{
+                    if(k < array.length){
+                        table[i][j] = array[k];
+                        k++;
+                    }
+                    else
+                        break;
+                }
+            }
+        }
+        return table;
+    }
+    public String EncryprionAlgirithm(String str, String keyString){
+        char [][]table = createTable(array);
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j < array.length; j++){
+                System.out.print(" " + table[i][j]);
+            }
+            System.out.println(" ");
+        }
+        String res = "";
+        return res;
+    }
 }
