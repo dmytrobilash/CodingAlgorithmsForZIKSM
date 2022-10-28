@@ -6,8 +6,9 @@ public class Main
         //String res = object.encryptionAlgorithm();
         //String res = object.encryptionAlgorithm("КРИПТОГРАФІЯ", 10, 2);
         //Bigrams object = new Bigrams();
-        Vigenere object = new Vigenere();
-        String res = object.EncryprionAlgirithm("ВАЖКАСПРАВА", "ЯКІР");
+        Gills object = new Gills();
+        int [][] transformationMatrix= {{5, 1}, {8, 3}};
+        String res = object.encryptionAlgorythm("ЗАБРАВПРИЗ", transformationMatrix);
         System.out.println(res);
     }
 }
