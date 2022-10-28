@@ -35,6 +35,27 @@ public class Vigenere {
             }
             System.out.println(" ");
         }
+        char [] CharArray = new char[keyString.length()];
+        CharArray = keyString.toCharArray();
+        char [] keyCharArray = new char[str.length()];
+        if(str.length()>keyString.length()){
+            for(int i = 0, k = 0; i < keyString.length(); i++){
+                keyCharArray[k] = CharArray[i];
+                k++;
+                if(i == keyString.length()-1){
+                    i = -1;
+                }
+                if(k == str.length()){
+                    break;
+                }
+            }
+        }
+        else {
+            keyCharArray = CharArray;
+        }
+        for(int i = 0; i < str.length(); i ++){
+            System.out.print(keyCharArray[i]);
+        }
         String res = "";
         return res;
     }

@@ -7,7 +7,7 @@ public class Main
         //String res = object.encryptionAlgorithm("КРИПТОГРАФІЯ", 10, 2);
         //Bigrams object = new Bigrams();
         Vigenere object = new Vigenere();
-        String res = object.EncryprionAlgirithm("1", "1");
+        String res = object.EncryprionAlgirithm("АБВГДДІАІВФФВ", "АБВІ");
         //System.out.println(res);
     }
 }
