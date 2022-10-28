@@ -3,12 +3,15 @@ public class Vigenere {
             'Є','Ж','З','И','І','Ї','Й','К','Л','М',
             'Н','О','П','Р','С','Т','У','Ф','X','Ц','Ч','Ш','Щ','Ь','Ю','Я'};
     private char [][] createTable(char [] array) {
-        char[][] table = new char[array.length][array.length];
+        char[][] table = new char[array.length+2][array.length+2];
         int k = 0;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if(i+j < array.length){
-                    k = j+i;
+        for (int i = 0; i < array.length+1; i++) {
+            for (int j = 0; j < array.length+1; j++) {
+                if(i == 0 && j == 0){
+                    table[0][0] = '_';
+                }
+                else if(i+j < array.length+1){
+                    k = j+i-1;
                     table[i][j] = array[k];
                     if(k == array.length-1)
                     {
@@ -16,7 +19,7 @@ public class Vigenere {
                     }
                 }
                 else{
-                    if(k < array.length){
+                    if(k < array.length+1){
                         table[i][j] = array[k];
                         k++;
                     }
@@ -29,8 +32,8 @@ public class Vigenere {
     }
     public String EncryprionAlgirithm(String str, String keyString){
         char [][]table = createTable(array);
-        for (int i = 0; i < array.length; i++){
-            for (int j = 0; j < array.length; j++){
+        for (int i = 0; i < array.length+1; i++){
+            for (int j = 0; j < array.length+1; j++){
                 System.out.print(" " + table[i][j]);
             }
             System.out.println(" ");
