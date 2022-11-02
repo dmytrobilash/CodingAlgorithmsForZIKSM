@@ -16,10 +16,7 @@ public class Gills {
                 i = -1;
             }
         }
-        for (int i = 0; i < charStr.length; i++) {
-            System.out.print(indexes[i] + " ");
-        }
-        System.out.println();
+
         //get encrypted indexes
         int[] newIndexes = new int[indexes.length];
         for (int i = 0; i < indexes.length; i++) {
@@ -28,9 +25,6 @@ public class Gills {
             } else {
                 newIndexes[i] = (transformationMatrix[1][0] * indexes[i - 1] + transformationMatrix[1][1] * indexes[i]) % alphabet.length;
             }
-        }
-        for (int i = 0; i < charStr.length; i++) {
-            System.out.print(newIndexes[i] + " ");
         }
         //get final string
         for (int newIndex : newIndexes) {

@@ -3,19 +3,19 @@ import java.util.Arrays;
 public class Bigrams {
 
     private final char[][] leftBigram = {
-            {'К', 'Ф', 'А', 'М', 'У', '+'},
-            {'Б', 'Х', 'П', 'Р', 'О', 'Е'},
-            {'Ї', 'В', 'Я', 'Є', ' ', 'Д'},
-            {'.', 'Л', 'Й', 'Ю', 'Ц', 'Г'},
-            {'1', 'Ж', 'И', 'С', 'Т', 'Ш',},
-            {'З', 'Ч', 'І', 'Ь', 'Н', 'Щ'}};
+            {'Х', 'Ж', 'Щ', 'Н', 'Ю', 'Р'},
+            {'А', 'И', 'Т', 'Ь', 'Ц', 'Б'},
+            {'=', 'Я', 'М', 'Е', 'Ґ', 'С'},
+            {'Л', 'В', 'І', 'П', 'Ч', '/'},
+            {'Ї', '+', 'Д', 'У', 'О', 'К',},
+            {'Й', 'З', 'Є', 'Ф', 'Г', 'Ш'}};
     private final char[][] rightBigram = {
-            {'Щ', ' ', 'Р', 'К', 'А', 'С'},
-            {'Д', 'Й', 'Ь', 'Г', 'В', 'Ж',},
-            {'Х', 'М', 'Ф', 'Т', 'І', 'Ї'},
-            {'.', 'Л', 'Ш', 'Ч', 'У', 'Ю'},
-            {'П', 'Е', 'З', 'Н', 'Я', 'Б'},
-            {'1', 'И', '+', 'Є', 'Ц', 'О'}};
+            {'И', 'Ч', 'Г', 'Я', 'Т', 'Б'},
+            {'=', 'Ж', 'Ь', 'М', 'О', 'Ф',},
+            {'З', 'Ю', 'Р', 'В', 'Щ', 'У'},
+            {'Ц', '+', 'П', 'Е', 'Л', 'І'},
+            {'Ї', 'А', 'Н', 'Ґ', 'Х', '/'},
+            {'Є', 'К', 'С', 'Ш', 'Д', 'Й'}};
 
     private void getOneDemensional(char[] leftBigramOneDemensional, char[][] leftBigram) {
         for (int i = 0, m = 0; i < leftBigram.length * leftBigram.length && m < leftBigram.length; m++) {
@@ -27,17 +27,21 @@ public class Bigrams {
     }
 
     public String encryptionAlgorithm(String str) {
+        //1
         StringBuilder res = new StringBuilder(); //result str
         char[] charStr = new char[str.length()];
+        // 1.1
         char[] leftBigramOneDemensional = new char[leftBigram.length * leftBigram.length];
         char[] rightBigramOneDemensional = new char[leftBigram.length * leftBigram.length];
 
         getOneDemensional(leftBigramOneDemensional, leftBigram);
         getOneDemensional(rightBigramOneDemensional, rightBigram);
+
         for (int i = 0; i < str.length(); i++) {
             charStr[i] = str.charAt(i);
         }
 
+        // 1.2
         int[] indexes = new int[str.length()];
         for (int i = 0; i < charStr.length; i++) {
             if (i % 2 == 0) {
@@ -56,7 +60,7 @@ public class Bigrams {
                 }
             }
         }
-        //3
+        //Indexes in matrix
         int[][] index = new int[str.length()][2];
         for (int i = 0; i < str.length(); i++) {
             for (int j = 0; j < 2; j++) {
@@ -67,17 +71,30 @@ public class Bigrams {
                 }
             }
         }
+
         for (int i = 0; i < indexes.length; i++) {
+
             if (i % 2 == 0) {
-                res.append(rightBigram[index[i][0]][index[i + 1][1]]);
+                if(index[i][0] == index[i+1][0]){
+                    res.append(leftBigram[index[i][0]][index[i + 1][1]]);
+                }
+                else
+                    res.append(rightBigram[index[i][0]][index[i + 1][1]]);
             } else {
-                res.append(leftBigram[index[i][0]][index[i - 1][1]]);
+                if(index[i][0] == index[i-1][0]){
+                    res.append(rightBigram[index[i][0]][index[i - 1][1]]);
+                }
+                else
+                    res.append(leftBigram[index[i][0]][index[i - 1][1]]);
             }
+
+
         }
+
         return res.toString();
     }
 
-    public String decryptionAlgorithm(String str) {
+    /*public String decryptionAlgorithm(String str) {
         StringBuilder res = new StringBuilder(); //result str
         char[] charStr = new char[str.length()];
         char[] leftBigramOneDemensional = new char[leftBigram.length * leftBigram.length];
@@ -126,5 +143,5 @@ public class Bigrams {
             }
         }
         return res.toString();
-    }
+    }*/
 }

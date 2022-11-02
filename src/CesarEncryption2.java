@@ -76,12 +76,6 @@ public class CesarEncryption2 {
                 }
             }
         }
-        for (char c : keyAlphabet) {
-            System.out.println(c);
-        }
-        for (int value : values) {
-            System.out.println(value);
-        }
         for (int value : values) {
             res.append(keyAlphabet[value]);
         }
